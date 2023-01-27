@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import * as I from '../../store/storeInterfaces'
-import defaultStore from '../../store/defaultStore'
+import storeAdressAndMap from '../../store/storeAdressAndMap'
 import {getApi} from '../../api/getApi'
 import {uploadApi} from '../../api/uploadApi'
 import {deleteApi} from '../../api/deleteApi'

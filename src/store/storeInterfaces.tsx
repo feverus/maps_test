@@ -1,3 +1,3 @@
-export interface Sample {
-    id: string;
-}
+import ymaps from 'yandex-maps'
+
+export type geoObject = ymaps.GeoObject

@@ -1,11 +1,12 @@
-import defaultStore from '../../store/defaultStore'
+import storeAdressAndMap from '../../store/storeAdressAndMap'
 import useMain from "./main.service";
 import C from './content.module.scss'
+import AdressAndMapContent from '../adressAndMapContent';
 
 export function Main() {
-	const [state, api] = useMain() 
-
 	return (
-		<>hello {defaultStore.sample}</>
+		<>
+			<AdressAndMapContent />		
+		</>		
 	)
 }
