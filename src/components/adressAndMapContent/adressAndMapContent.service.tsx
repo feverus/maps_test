@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react'
-import * as I from '../../store/storeInterfaces'
-import storeAdressAndMap, { StoreAdressAndMap } from '../../store/storeAdressAndMap'
-import {getApi} from '../../api/getApi'
-import {uploadApi} from '../../api/uploadApi'
-import {deleteApi} from '../../api/deleteApi'
-import { UseAdressAndMapContent } from './adressAndMapContent.props'
+import { useState } from 'react'
+import storeAdressAndMap from '../../store/storeAdressAndMap'
+import { UseAdressAndMapContent, DataToSend } from './adressAndMapContent.props'
 import { useDebouncedCallback } from 'use-debounce';
+import {uploadApi} from '../../api/uploadApi'
 
 const useAdressAndMapContent:UseAdressAndMapContent = () => {    
     const [adress, setAdress] = useState('')
@@ -26,12 +23,36 @@ const useAdressAndMapContent:UseAdressAndMapContent = () => {
 	}
     const changeNearCity = (value:string) => {
         if (value[value.length-1].match(/[А-Я|а-я| |-]/)!==null) {
-            if (value.length===1) value = (value[0]!==' ' && value[0]!=='-') ? value[0].toUpperCase() : ''
+            if (value.length===1) {
+                value = (value[0]!==' ' && value[0]!=='-') ? value[0].toUpperCase() : ''
+            }
             setNearCity(value)
             debouncedSetNearCity(value)
         }
 	}
     
+    const clickForward = () => {
+        let dataTosend:DataToSend[]=[]
+        storeAdressAndMap.dataFromApi.forEach(geo => {
+            if (geo!==undefined) {
+                let temp:DataToSend = {}
+                const geoM = JSON.parse(JSON.stringify(geo))
+
+                //сбор нужных данных ждя отправки на бэкенд
+                temp.pos = geoM.GeoObject.Point.pos
+                temp.formatted = geoM.GeoObject.metaDataProperty?.GeocoderMetaData?.Address?.formatted                
+                temp.postal_code = geoM.GeoObject.metaDataProperty?.GeocoderMetaData?.Address?.postal_code
+                temp.CountryName = geoM.GeoObject.metaDataProperty?.GeocoderMetaData?.AddressDetails?.Country?.CountryName
+                temp.AdministrativeAreaName = geoM.GeoObject.metaDataProperty?.GeocoderMetaData?.AddressDetails?.Country?.AdministrativeArea?.AdministrativeAreaName
+                temp.SubAdministrativeAreaName = geoM.GeoObject.metaDataProperty?.GeocoderMetaData?.AddressDetails?.Country?.AdministrativeArea?.SubAdministrativeArea?.SubAdministrativeAreaName
+                temp.ThoroughfareName = geoM.GeoObject.metaDataProperty?.GeocoderMetaData?.AddressDetails?.Country?.AdministrativeArea?.SubAdministrativeArea?.Locality?.DependentLocality?.DependentLocality?.Thoroughfare?.ThoroughfareName
+                
+                dataTosend.push(temp)
+            }
+        })          
+        uploadApi(dataTosend)     
+    }
+
     const state = {
         adress: adress,
         nearCity: nearCity,
@@ -40,6 +61,7 @@ const useAdressAndMapContent:UseAdressAndMapContent = () => {
     const api = {
         changeAdress:changeAdress,
         changeNearCity:changeNearCity,
+        clickForward:clickForward,
     }
 
     return (

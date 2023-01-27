@@ -23,9 +23,10 @@ export class StoreAdressAndMap {
         this.nearCity = newData
     }
     setDataFromApi(newData:geoObject | undefined, field: number) {
+        console.log(JSON.stringify(newData))
         let copy = [...this.dataFromApi]
         copy[field] = newData
-        if (newData!==undefined) (this.dataFromApi = copy)
+        this.dataFromApi = copy
     }
 }
 

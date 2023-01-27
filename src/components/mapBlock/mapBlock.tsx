@@ -21,10 +21,11 @@ export function MapBlock() {
 				height= {171}
 				onLoad={(el) => (api.initYmaps(el))}
 			>
-				{state.coord.map((pos, n)=>
+				{state.coord.map((pos, index)=>
 					<Placemark 
-						geometry={pos}
-						key={'point_'+n}
+						key={'point_' + index}
+						geometry={pos}						
+						options={{preset: 'islands#circleIcon', iconColor:state.PLacemarkColors[index]}}
 					/>)
 				}
 				

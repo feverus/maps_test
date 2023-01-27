@@ -15,7 +15,9 @@ export function AdressAndMapContent() {
 
 			<input type="text" value={state.nearCity} onChange={e=>api.changeNearCity(e.target.value)} />
 
-			<MapBlock />		
+			<MapBlock />	
+
+			<button onClick={api.clickForward}>Дальше</button>	
 		</>
 
 		

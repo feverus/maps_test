@@ -14,6 +14,7 @@ export type StateType = {
     Ymaps: typeof ymaps|null;
     mapState: ymaps.IMapState;
     coord: Array<number[] | undefined>;
+    PLacemarkColors: Array<string>;
 };
 
 export type ApiType = {

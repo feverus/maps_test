@@ -7,9 +7,10 @@ import {deleteApi} from '../../api/deleteApi'
 import { UseMapBlock, typeofYmaps, findedType } from './mapBlock.props'
 
 const useMapBlock:UseMapBlock = () => {   	
-	const [coord, setCoord] = useState<Array<number[] | undefined>>([undefined, undefined])
-	const [Ymaps, setYmaps] = useState<typeofYmaps|null>(null)
-    const [center, setCenter] = useState<number[]>([65.751574, 37.573856])
+    const [Ymaps, setYmaps] = useState<typeofYmaps|null>(null)
+
+	const [coord, setCoord] = useState<Array<number[] | undefined>>([undefined, undefined])	
+    const [center, setCenter] = useState<number[]>([59.938955, 30.315644])
 
 	const mapState = {
 		center: center,
@@ -17,13 +18,17 @@ const useMapBlock:UseMapBlock = () => {
 		controls: ['zoomControl', 'fullscreenControl'],		
 	}
 
+    const PLacemarkColors = [
+        '#206010', '#105060'
+    ]
+
     const initYmaps = (el: typeofYmaps) => {
         setYmaps(el)
     }
 
     const getNewGeoCode = (search:string, index: number) => {
         console.log(`Геокодирование адреса ${index} в координаты`)
-        if ((search.length>3) && (Ymaps)) {
+        if ((search.length>2) && (Ymaps)) {
             Ymaps.geocode(search, {json:true})
             .then((result) => {
                 const finded:findedType = JSON.parse(JSON.stringify(result)).GeoObjectCollection    
@@ -33,26 +38,17 @@ const useMapBlock:UseMapBlock = () => {
                 }
             })
             .catch(()=>console.log('Ошибка обработки ответа от api'))
-		}
+		} else {
+            storeAdressAndMap.setDataFromApi(undefined, index)
+        }
     }
 
     useEffect(() => {
-        console.log('Геокодирование адреса 1 в координаты')
-        if ((storeAdressAndMap.adress.length>3) && (Ymaps)) {
-            Ymaps.geocode(storeAdressAndMap.adress, {json:true})
-            .then((result) => {
-                const finded:findedType = JSON.parse(JSON.stringify(result)).GeoObjectCollection    
-
-                if (finded.metaDataProperty.GeocoderResponseMetaData.found as number>0) {
-                      storeAdressAndMap.setDataFromApi(finded.featureMember[0], 0)
-                }
-            })
-            .catch(()=>console.log('Ошибка обработки ответа от api'))
-		}
+        getNewGeoCode(storeAdressAndMap.adress, 0)
     }, [storeAdressAndMap.adress])
 
     useEffect(() => {
-        getNewGeoCode(storeAdressAndMap.adress, 1)
+        getNewGeoCode(storeAdressAndMap.nearCity, 1)
     }, [storeAdressAndMap.nearCity])
 
     const geoObjectToCoord = (geo: I.geoObject | undefined) => {
@@ -80,7 +76,8 @@ const useMapBlock:UseMapBlock = () => {
     const state = {
         Ymaps: Ymaps,
         mapState: mapState,
-        coord: coord
+        coord: coord,
+        PLacemarkColors: PLacemarkColors,
     }
 
     const api = {
