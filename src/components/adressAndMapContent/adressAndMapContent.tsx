@@ -11,13 +11,17 @@ export function AdressAndMapContent() {
 
 	return (
 		<main>
+			<h1>Где вы находитесь или будете принимать волонтёров</h1>
+			
 			<input type="text" value={state.adress} onChange={e=>api.changeAdress(e.target.value)} />
 
 			<input type="text" value={state.nearCity} onChange={e=>api.changeNearCity(e.target.value)} />
 
 			<MapBlock />	
 
-			<button onClick={api.clickForward}>Дальше</button>	
+			<button onClick={api.clickForward} className={C.forward}>
+				Дальше
+			</button>	
 		</main>		
 	)
 }
