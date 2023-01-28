@@ -1,0 +1,87 @@
+@import '../../global.modules.scss';
+
+header {
+    height: 80px;
+    display: flex;
+    box-shadow: 0px 1px 0px 0px rgba(223, 230, 235, 1);
+    grid-area: header;
+    .logo {
+        width: 320px;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        .image {
+            width: 45px;
+            height: 45px;
+            margin: 0 0 0 50px;
+        }
+        .text {
+            margin-left: 17px;
+        }
+        .select {
+            margin-left: 26px;
+        }
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        justify-content: flex-end;
+        p {
+            display: flex;
+            align-items: center;
+            color: rgba(61, 171, 247, 1);
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 19px;
+            img {
+                margin-right: 14px;
+            }
+        }
+    }  
+    
+    .accountInfo {
+        padding-left: 62px;
+        width: 285px;
+        display: flex;
+        align-items: center;
+        ul {
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            padding: 0;
+            li {
+                margin-right: 19px;
+            }
+        }
+        span {
+            margin-right: 10px;
+            color: rgba(33, 33, 33, 1);
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 17px;
+        }
+        .avatar {
+            width: 30px;
+            height: 30px;
+            margin-right: 11px;
+        }
+        button {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background: transparent;
+        }
+        .fav {
+            background: url('media/ic_not_fav.svg') center center no-repeat;
+        }
+        .message {
+            background: url('media/message_0.svg') center center no-repeat;
+        }
+        .arrowDown {
+            background: url('media/rectangle.svg') center center no-repeat;
+        }
+    }
+}

@@ -8,6 +8,13 @@ export function MapBlock() {
 	const [state, api] = useMapBlock() 
 	
 	console.log(state)
+
+	const handleGeocode = (result: any) => {
+        let coordinates = result.geoObjects.get(0).geometry.getCoordinates()
+		console.log('coordinates', coordinates)
+    }
+
+
 	return (
 		<YMaps
 			query={{
@@ -30,6 +37,6 @@ export function MapBlock() {
 				}
 				
 			</Map>
-		</YMaps>		
+		</YMaps>
 	)
 }

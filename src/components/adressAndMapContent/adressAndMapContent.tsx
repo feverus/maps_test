@@ -1,6 +1,6 @@
 import storeAdressAndMap from '../../store/storeAdressAndMap'
 import useAdressAndMapContent from "./adressAndMapContent.service";
-import C from './content.module.scss'
+import C from './adressAndMapContent.module.scss'
 import MapBlock from '../mapBlock';
 
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
@@ -10,7 +10,7 @@ export function AdressAndMapContent() {
 	const [state, api] = useAdressAndMapContent() 
 
 	return (
-		<>
+		<main>
 			<input type="text" value={state.adress} onChange={e=>api.changeAdress(e.target.value)} />
 
 			<input type="text" value={state.nearCity} onChange={e=>api.changeNearCity(e.target.value)} />
@@ -18,8 +18,6 @@ export function AdressAndMapContent() {
 			<MapBlock />	
 
 			<button onClick={api.clickForward}>Дальше</button>	
-		</>
-
-		
+		</main>		
 	)
 }
