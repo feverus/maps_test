@@ -14,7 +14,7 @@ const menu = [
 
 const MenuItem = (item: { svg: string; text: string; active: boolean }) => {
 	return (
-		<button className={item.active && C.active}>
+		<button className={item.active ? C.active: ''}>
 			<ReactSVG src={"media/"+item.svg+".svg"}></ReactSVG>
 			<span>{item.text}</span>
 		</button>
@@ -31,10 +31,10 @@ export function Sidebar() {
 			
 			<div className={C.support}>
 				<img src="media/support-kristina.png" alt="Помощник Кристина" />
-				<span>Кристина</span>
-				<span>Ваш персональный помощник по работе с системой</span>
+				<span className={C.name}>Кристина</span>
+				<span className={C.text}>Ваш персональный помощник по работе с системой</span>
 				<button>Написать</button>
-				<span>E-mail <a href="mailto:support@goodsurfing.org">support@goodsurfing.org</a></span>
+				<span className={C.mail}>E-mail <a href="mailto:support@goodsurfing.org">support@goodsurfing.org</a></span>
 			</div>
 		</aside>
 	)

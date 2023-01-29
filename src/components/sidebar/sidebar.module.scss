@@ -44,31 +44,33 @@ aside {
     } 
 
     .support {
+        overflow: hidden;
         border: 1px solid #8494A1;
-        height: 298px;
+        min-height: 298px;
         width: 242px;
         display: flex;
         flex-direction: column;
         align-items: center;
         color: #FFFFFF;
+        margin-bottom: 30px;
         &>:first-child {margin-top: 19px;}
         span {
             max-width: 200px;
             text-align: center;
         }        
-        &>:nth-child(2) {
+        .name {
             font-weight: 700;
             font-size: 16px;
             line-height: 26px;
-            height: 28px;
+            min-height: 28px;
             margin-top: 15px;
             border-radius: 50%;
         } 
-        &>:nth-child(3) {
+        .text {
             font-weight: 400;
             font-size: 14px;
             line-height: 22px;
-            height: 44px;
+            min-height: 44px;
             margin-top: 3px;
         } 
         button {
@@ -85,9 +87,10 @@ aside {
             &:hover {
                 border: 1px solid #149bfc;
                 color: #149bfc;
+                cursor: pointer;
             }
         }
-        &>:nth-child(5) {
+        .mail {
             font-weight: 400;
             font-size: 14px;
             line-height: 24px;

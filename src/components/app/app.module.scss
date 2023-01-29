@@ -1,0 +1,21 @@
+@import '../../global.modules.scss';
+
+.main {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: auto 100%;
+    grid-template-areas:
+        "header header"
+        "aside main";
+}
+@media (max-width: 800px) {
+    .main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "header"
+            "aside"
+            "main";  
+    }
+}

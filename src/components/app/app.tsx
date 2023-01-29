@@ -1,11 +1,9 @@
-import storeAdressAndMap from '../../store/storeAdressAndMap'
-import useMain from "./main.service";
-import C from './main.module.scss'
+import C from './app.module.scss'
 import AdressAndMapContent from '../adressAndMapContent'
 import Header from '../header'
 import Sidebar from '../sidebar'
 
-export function Main() {
+export function App() {
 	return (
 		<section className={C.main}>
 			<Header {...{menuOptions:{

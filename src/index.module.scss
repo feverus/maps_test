@@ -4,7 +4,7 @@ html, body, body>div {
     height: 100%;
 }
 body {
-    background: $main_bg_color;
+    height: 100%;
     padding: 0%;
     margin: 0;
     font-family: 'Lato', sans-serif;
@@ -13,4 +13,5 @@ body {
     font-size: 14px;
     line-height: 16px;
     background: #FBFDFE;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

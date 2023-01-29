@@ -26,9 +26,9 @@ const useMapBlock:UseMapBlock = () => {
         setYmaps(el)
     }
 
-    const getNewGeoCode = (search:string, index: number) => {
-        console.log(`Геокодирование адреса ${index} в координаты`)
+    const getNewGeoCode = (search:string, index: number) => {        
         if ((search.length>2) && (Ymaps)) {
+            console.log(`Геокодирование адреса ${index} в координаты`)
             Ymaps.geocode(search, {json:true})
             .then((result) => {
                 const finded:findedType = JSON.parse(JSON.stringify(result)).GeoObjectCollection    

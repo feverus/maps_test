@@ -21,14 +21,24 @@ const useAdressAndMapContent:UseAdressAndMapContent = () => {
 		setAdress(value)
         debouncedSetAdress(value)
 	}
+    
     const changeNearCity = (value:string) => {
-        if (value[value.length-1].match(/[А-Я|а-я| |-]/)!==null) {
-            if (value.length===1) {
-                value = (value[0]!==' ' && value[0]!=='-') ? value[0].toUpperCase() : ''
-            }
-            setNearCity(value)
-            debouncedSetNearCity(value)
-        }
+        const cleanedValue = value.split('')
+            .reduce((accumulator, current) => {
+                if (current.match(/[А-Яа-я -]/)!==null) {
+                    if (accumulator.length===0) {
+                        if (current!== ' ' && current!=='-') 
+                            current = current.toUpperCase() 
+                        else 
+                            current = ''
+                    }
+                } else {current = ''}
+                accumulator+=current
+                return accumulator
+            }, '')
+
+        setNearCity(cleanedValue)
+        debouncedSetNearCity(cleanedValue)
 	}
     
     const clickForward = () => {

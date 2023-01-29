@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'mobx-react'
-import Main from './components/main';
+import App from './components/app';
 import storeAdressAndMap from './store/storeAdressAndMap'
 
 import  './index.module.scss'
@@ -15,6 +15,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider {...stores}>
-    <Main />
+    <App />
   </Provider>
 )

@@ -1,28 +1,19 @@
 import C from './header.module.scss'
-import { useState } from 'react'
 import { Props } from './header.props'
 import logoImage from './media/logo-image.svg'
 import logoText from './media/logo-text.svg'
 
-import Select from 'react-select'
-import { selectOptions, selectStyles, DropdownIndicator } from './selectService'
+import { CustomSelect } from './components/customSelect'
 
 export function Header(props:Props) {
-	const [selectedOption, setSelectedOption] = useState({ value: 'ru', label: 'RU', color:'' })
+
 
 	return (
 		<header>
             <div className={C.logo}>
-                <img src={logoImage} alt="Logo image" className={C.image}/>
+                <img src={logoImage} alt="Logo" className={C.image}/>
                 <img src={logoText} alt="Logo text" className={C.text}/>
-				<Select
-					className={C.select}
-					defaultValue={selectedOption}
-					onChange={(e)=>setSelectedOption}
-					options={selectOptions}
-					styles={selectStyles}
-					components={{ DropdownIndicator }}
-				/>
+				<CustomSelect />
             </div>
 
             <nav className={C.menu}>
@@ -59,3 +50,5 @@ export function Header(props:Props) {
         </header>	
 	)
 }
+
+
