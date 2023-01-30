@@ -77,19 +77,14 @@ const useMapBlock:UseMapBlock = () => {
             setZoom(4)
         } else {
             if (coord.every(c => c!==undefined)) {
-                if (storeAdressAndMap.lastFieldChanged===1) {
-                    setZoom(8)
-                }
-                let c = coord as number[][]
-                setCenter([(c[0][0] + c[1][0]) / 2 , (c[0][1] + c[1][1]) / 2])  
+                let c:number[][] = JSON.parse(JSON.stringify(coord as number[][]))
+ 
                 c.sort(((a, b) => a[0]-b[0]))
                 if (c[0][1] > c[1][1]) {
                     let temp = c[0][1]
                     c[0][1] = c[1][1]
                     c[1][1] = temp
-                }
-                
-                console.log(c)                   
+                }                
                 
                 setBounds(c)
             } else {

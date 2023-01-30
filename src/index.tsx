@@ -23,11 +23,15 @@ const router = createBrowserRouter([
     element: <App page='/' />,
   },
   {
-    path: "adress-and-map",
+    path: "maps_test/",
+    element: <App page='/' />,
+  },
+  {
+    path: "maps_test/adress-and-map",
     element: <App page='add_offer' />
   },
   {
-    path: "show-objects-on-map",
+    path: "maps_test/show-objects-on-map",
     element: <App page='offers' />
   }
 ]);
