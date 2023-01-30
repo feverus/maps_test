@@ -3,10 +3,11 @@
 .main {
     display: grid;
     grid-template-columns: 320px 1fr;
-    grid-template-rows: auto 100%;
+    grid-template-rows: auto 100% 100%;
     grid-template-areas:
         "header header"
-        "aside main";
+        "aside main"
+        "full full";
 }
 @media (max-width: 800px) {
     .main {
@@ -17,5 +18,34 @@
             "header"
             "aside"
             "main";  
+    }
+}
+.testNavigation {
+    grid-area: full;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    a {
+        margin: 20px 0;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        width: 380px;
+        border-radius: 2px;
+        background: #3DABF7;
+        border: none;
+        color: #FFFFFF;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+        &:hover {
+            background: #149bfc;
+            cursor: pointer;
+        }
+        
     }
 }

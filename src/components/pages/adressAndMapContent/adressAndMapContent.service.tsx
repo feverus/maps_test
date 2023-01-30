@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import storeAdressAndMap from '../../store/storeAdressAndMap'
+import storeAdressAndMap from '../../../store/storeAdressAndMap'
 import { UseAdressAndMapContent, DataToSend } from './adressAndMapContent.props'
 import { useDebouncedCallback } from 'use-debounce';
-import {uploadApi} from '../../api/uploadApi'
+import {uploadApi} from '../../../api/uploadApi'
 
 const useAdressAndMapContent:UseAdressAndMapContent = () => {    
     const [adress, setAdress] = useState('')

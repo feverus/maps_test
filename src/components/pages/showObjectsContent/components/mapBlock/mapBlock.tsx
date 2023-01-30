@@ -1,4 +1,4 @@
-import storeAdressAndMap from '../../store/storeAdressAndMap'
+import storeAdressAndMap from '../../../../../store/storeAdressAndMap'
 import useMapBlock from "./mapBlock.service";
 import C from './mapBlock.module.scss'
 

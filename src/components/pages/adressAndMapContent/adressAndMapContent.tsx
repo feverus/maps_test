@@ -1,6 +1,6 @@
 import useAdressAndMapContent from "./adressAndMapContent.service";
 import C from './adressAndMapContent.module.scss'
-import MapBlock from '../mapBlock';
+import MapBlock from './components/mapBlock';
 
 export function AdressAndMapContent() {
 	const [state, api] = useAdressAndMapContent() 

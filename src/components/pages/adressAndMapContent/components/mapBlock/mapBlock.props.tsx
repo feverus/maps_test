@@ -1,4 +1,4 @@
-import * as I from '../../store/storeInterfaces'
+import * as I from '../../../../../store/storeInterfaces'
 import ymaps from 'yandex-maps'
 
 export type typeofYmaps = typeof ymaps

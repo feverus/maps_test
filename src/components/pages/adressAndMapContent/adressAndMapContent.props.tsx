@@ -1,4 +1,4 @@
-import * as I from '../../store/storeInterfaces';
+import * as I from '../../../store/storeInterfaces';
 
 export type StateType = {
     adress: string;

@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo } from 'react'
-import * as I from '../../store/storeInterfaces'
-import storeAdressAndMap, { StoreAdressAndMap } from '../../store/storeAdressAndMap'
-import {getApi} from '../../api/getApi'
-import {uploadApi} from '../../api/uploadApi'
-import {deleteApi} from '../../api/deleteApi'
+import * as I from '../../../../../store/storeInterfaces'
+import storeAdressAndMap, { StoreAdressAndMap } from '../../../../../store/storeAdressAndMap'
+import {getApi} from '../../../../../api/getApi'
+import {uploadApi} from '../../../../../api/uploadApi'
+import {deleteApi} from '../../../../../api/deleteApi'
 import { UseMapBlock, typeofYmaps, findedType } from './mapBlock.props'
 
 const useMapBlock:UseMapBlock = () => {   	
