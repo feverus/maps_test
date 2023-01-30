@@ -1,11 +1,16 @@
 import storeAdressAndMap from '../../../../../store/storeAdressAndMap'
+import { Objects } from '../../index'
 import useMapBlock from "./mapBlock.service";
 import C from './mapBlock.module.scss'
 
-import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
+import { YMaps, Map, Placemark, Clusterer } from '@pbe/react-yandex-maps';
 
-export function MapBlock() {
-	const [state, api] = useMapBlock() 
+export function MapBlock(props: {objects:Objects}) {
+	const [state, api] = useMapBlock(props.objects) 
+
+	console.log(state)
+
+	const objects = state.arrayOfObjects
 
 	return (
 		<YMaps
@@ -15,18 +20,32 @@ export function MapBlock() {
 		>
 			<Map 
 				state={state.mapState}
-				modules={['control.ZoomControl', 'control.FullscreenControl', 'geocode']}
+				modules={['control.ZoomControl', 'control.FullscreenControl', 'geocode', 'layout.PieChart']}
 				onLoad={(el) => (api.initYmaps(el))}
 				className={C.map}
 			>
-				{state.coord.map((pos, index)=>
-					pos && <Placemark 
-						key={'point_' + index}
-						geometry={pos}						
-						options={{preset: 'islands#circleIcon', iconColor:state.PLacemarkColors[index]}}
-					/>)
-				}
-				
+					<Clusterer
+						options={{
+						clusterIconLayout: 'default#pieChart',
+						groupByCoordinates: false,
+						iconPieChartRadius: 18,
+						iconPieChartCoreRadius: 14,
+						iconPieChartCoreFillStyle: '#ffffff',
+						iconPieChartStrokeStyle: '#ffffff10',
+						iconPieChartStrokeWidth: 1,
+						iconPieChartCaptionMaxWidth: 20
+						}}
+					>
+						{objects.map(({coord, color}, index) =>
+							coord && <Placemark 
+								key={'point_' + index}
+								geometry={coord}						
+								options={
+									{preset: 'islands#circleIcon', iconColor:color,}
+								}
+							/>)
+						}
+					</Clusterer>				
 			</Map>
 		</YMaps>
 	)

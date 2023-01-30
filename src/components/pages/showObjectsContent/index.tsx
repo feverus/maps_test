@@ -5,4 +5,4 @@ export default
 	inject('storeAdressAndMap')
 	(observer(ShowObjectsContent));
 
-export type { StateType, ApiType, UseShowObjectsContent } from './showObjectsContent.props'
+export type { StateType, ApiType, UseShowObjectsContent, Objects } from './showObjectsContent.props'

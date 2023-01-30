@@ -1,14 +1,19 @@
 import useShowObjectsContent from "./showObjectsContent.service";
-import C from './adressAndMapContent.module.scss'
+import C from './showObjectsContent.module.scss'
 import MapBlock from './components/mapBlock';
 
 export function ShowObjectsContent() {
 	const [state, api] = useShowObjectsContent() 
 
-	return (
-		<main>
+	console.log(state)
 
-			<MapBlock />
+	return (
+		<main  className={C.fullwidth}>
+			<div className={C.filter}>
+
+			</div>
+			
+			<MapBlock objects={state.objects}  />
 
 		</main>		
 	)

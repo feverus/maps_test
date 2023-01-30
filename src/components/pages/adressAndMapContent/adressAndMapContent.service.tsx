@@ -48,7 +48,7 @@ const useAdressAndMapContent:UseAdressAndMapContent = () => {
                 let temp:DataToSend = {}
                 const geoM = JSON.parse(JSON.stringify(geo))
 
-                //сбор нужных данных ждя отправки на бэкенд
+                //сбор нужных данных для отправки на бэкенд
                 temp.pos = geoM.GeoObject.Point.pos
                 temp.formatted = geoM.GeoObject.metaDataProperty?.GeocoderMetaData?.Address?.formatted                
                 temp.postal_code = geoM.GeoObject.metaDataProperty?.GeocoderMetaData?.Address?.postal_code
