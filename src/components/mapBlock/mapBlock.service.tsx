@@ -11,10 +11,11 @@ const useMapBlock:UseMapBlock = () => {
 
 	const [coord, setCoord] = useState<Array<number[] | undefined>>([undefined, undefined])	
     const [center, setCenter] = useState<number[]>([59.938955, 30.315644])
+    const [zoom, setZoom] = useState(4)
 
 	const mapState = {
 		center: center,
-		zoom: 4,
+		zoom: zoom,
 		controls: ['zoomControl', 'fullscreenControl'],		
 	}
 
@@ -69,8 +70,22 @@ const useMapBlock:UseMapBlock = () => {
     }, [storeAdressAndMap.dataFromApi])
 
     useEffect(() => {
-        if (coord[0]!==undefined) setCenter(coord[0])
-        else if (coord[1]!==undefined) setCenter(coord[1])
+        if (coord.every(c => c===undefined)) 
+            setZoom(4)
+        else {
+            let zoomTo = 0
+            if (coord.every(c => c!==undefined)) {
+                if (storeAdressAndMap.lastFieldChanged===1) zoomTo = 1
+                setCenter(coord[storeAdressAndMap.lastFieldChanged] as number[])                
+            } else {
+                if (coord[0]!==undefined) setCenter(coord[0])
+                if (coord[1]!==undefined) {
+                    zoomTo = 1
+                    setCenter(coord[1])
+                }
+            }
+            (zoomTo===1) ? setZoom(8) : setZoom(16)
+        }
     }, [coord])    
 
     const state = {

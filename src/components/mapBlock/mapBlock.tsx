@@ -6,8 +6,6 @@ import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 
 export function MapBlock() {
 	const [state, api] = useMapBlock() 
-	
-	//console.log(state)
 
 	return (
 		<YMaps
@@ -22,7 +20,7 @@ export function MapBlock() {
 				className={C.map}
 			>
 				{state.coord.map((pos, index)=>
-					<Placemark 
+					pos && <Placemark 
 						key={'point_' + index}
 						geometry={pos}						
 						options={{preset: 'islands#circleIcon', iconColor:state.PLacemarkColors[index]}}
