@@ -1,4 +1,4 @@
-import { Objects } from './showObjectsContent.props'
+import { Objects } from '../components/pages/showObjectsContent/showObjectsContent.props'
 
 function random(min: number, max: number) {
     return min + Math.random() * (max - min);
@@ -9,7 +9,7 @@ function randomInt(min: number, max: number) {
 }
   
 const colors = ['#E3C2CA', '#C3A3E9', '#C6E7E6', '#C6E7E6', '#91A5B3', '#E0EBC6', '#7BE0C6', '#E6C6E7']
-const categorys = ['Работа в хостеле', 'Работа на ферме', 'Работа с животными', 'Преподавание', 'Работа с детьми', 'Благотворительность', 'Спорт', 'Искусство', 'Другое...']
+export const categorys = ['Работа в хостеле', 'Работа на ферме', 'Работа с животными', 'Преподавание', 'Работа с детьми', 'Благотворительность', 'Спорт', 'Искусство', 'Другое...']
 const adressArr = ['Москва, Россия', 'Санкт-Петербург, Россия', 'Тбилиси, Грузия']
 
 const template = {
@@ -17,7 +17,7 @@ const template = {
     description: 'Шаблонное описание работы в приюте. Приглашаем вас поддержать наш проект. Если Вы любите животных, то мы Вас ждём. Если вы хороший сотрудник то мы вас не отпустим.',
 }
 
-const objects:Objects = [];
+export const objects:Objects = [];
 
 for (let index = 0; index < 100; index++) {
     const category = randomInt(0, colors.length-1)
@@ -33,6 +33,3 @@ for (let index = 0; index < 100; index++) {
                     gone: randomInt(0, 100),
                     ...template})    
 }
-
-
-export default objects

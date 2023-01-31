@@ -16,11 +16,9 @@ export type ObjectsItem = {
 export type Objects = Array<ObjectsItem>
 
 export type StateType = {
-    objects: Objects,
 }
 
-export type ApiType = {
-    
+export type ApiType = {    
 }
 
 export type UseShowObjectsContent = () => [

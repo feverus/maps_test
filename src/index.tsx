@@ -10,11 +10,13 @@ import {
 
 import App from './components/app';
 import storeAdressAndMap from './store/storeAdressAndMap'
+import storeShowObjectsContent from './store/storeShowObjectsContent'
 
 import  './index.module.scss'
 
 const stores = {
   storeAdressAndMap,
+  storeShowObjectsContent
 }
 
 const router = createBrowserRouter([

@@ -1,6 +1,6 @@
 @import './global.modules.scss';
 
-html, body, body>div {
+html, body, body>div:first-child {
     height: 100%;
 }
 body {

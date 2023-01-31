@@ -1,10 +1,64 @@
 @import '../../../global.modules.scss';
 
+.checkPicker {
+    height: 40px;
+    width: 260px;  
+    margin-right: 10px;          
+    border: 1px solid #CBD3D8;
+    border-radius: 2px;           
+    &>div {border: none;}
+    *{
+        color: #212121;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+        box-shadow: none;
+    }
+}
+
 main.fullwidth {
     grid-area: full;
     height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
     .filter {
-        height: 80px;
+        min-height: 80px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding-bottom: 20px;
+        &>*{
+            margin-top: 20px;
+        }
+        &:first-child {margin-left: 50px;}
+        >div:nth-child(2) {margin-right: 10px;}
+        .dataPicker {
+            width: 180px;
+            height: 40px;
+            color: #CBD3D8;
+            border: 1px solid #CBD3D8;
+            border-radius: 2px;
+            &>div {border: none;}
+            * {box-shadow: none;}
+        }
+        .activityDirection {
+            @extend .checkPicker;
+            width: 260px;
+        }
+        .duration {
+            @extend .checkPicker;
+            width: 200px;
+        }
+        .addFilters {
+            @extend .checkPicker;
+            width: 230px;
+        }
+    }
+    .objectList {
+        width: calc(50% - 15px);
     }
 }
 
