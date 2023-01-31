@@ -14,7 +14,6 @@ const checkPickerData = storeShowObjectsContent.categorys.map(
 export function ShowObjectsContent() {
 	const [state, api] = useShowObjectsContent() 
 
-	console.log(state)
 
 	return (
 		<main  className={C.fullwidth}>

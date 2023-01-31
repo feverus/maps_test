@@ -24,11 +24,23 @@ const useMapBlock:UseMapBlock = (objects:Objects) => {
         setYmaps(el)
     }
   
-    const arrayOfObjects = storeShowObjectsContent.arrayOfObjects
+    useEffect(() => {        
+        const copy = storeShowObjectsContent.selectedCategorys
+        console.log(copy)
+        if (copy.length > 0) {
+            storeShowObjectsContent.setArrayOfObjects(
+                storeShowObjectsContent.defaultArrayOfObjects.filter(
+                    ({category}) => (copy.includes(category)===true)
+                )
+            ) 
+        } else {
+            storeShowObjectsContent.setArrayOfObjectsToDefault()
+        }
+    }, [storeShowObjectsContent.selectedCategorys])  
 
     useEffect(() => {        
-        let c:number[][] = arrayOfObjects.map(el => el.coord)
-        let min = [1000, 1000], max = [0, 0]
+        let c:number[][] = storeShowObjectsContent.arrayOfObjects.map(el => el.coord)
+        let min = [90, 180], max = [-90, -180]
         c.forEach(coord => {
             if (coord[0] < min[0]) min[0] = coord[0]
             if (coord[1] < min[1]) min[1] = coord[1]
@@ -37,12 +49,12 @@ const useMapBlock:UseMapBlock = (objects:Objects) => {
         })             
         
         setBounds([min, max])
-    }, [arrayOfObjects])  
+    }, [storeShowObjectsContent.arrayOfObjects])  
 
     const state = {
         Ymaps: Ymaps,
         mapState: mapState,
-        arrayOfObjects: arrayOfObjects,
+        arrayOfObjects: storeShowObjectsContent.arrayOfObjects,
     }
 
     const api = {
