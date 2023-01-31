@@ -1,0 +1,46 @@
+.balloonContent {
+    width: 180px;
+    height: 60px;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    img {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+    p {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;      
+        color: #212121;
+        overflow: hidden;
+        margin: 5px 0;
+        max-height: 50px;
+    }
+}
+ymaps[class$=balloon__content] {
+    margin: 0;
+    padding: 0;
+}
+
+ymaps[class$=i-custom-scroll] {
+    height: 60px;
+    left: -106px !important;
+    top: -87px !important;
+    box-shadow: 0px 3px 10px rgba(145, 165, 179, 0.464844);
+}
+ymaps[class$=balloon__layout] {
+    border-radius: 2px;
+    border: #DADADA 1px solid;
+    padding: 0;
+}
+ymaps[class$=balloon__tail] {
+    left: 101px;
+    width: 6px;
+    height: 6px;
+}
+ymaps[class$=balloon__close-button] {
+    width: 20px;
+    height: 20px;
+}

@@ -14,7 +14,7 @@ export type findedType = {
 export type StateType = {
     Ymaps: typeof ymaps|null;
     mapState: ymaps.IMapState;
-    arrayOfObjects: Objects
+    arrayOfObjects: Objects;
 };
 
 export type ApiType = {

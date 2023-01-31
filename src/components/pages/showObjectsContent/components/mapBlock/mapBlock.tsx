@@ -1,7 +1,8 @@
 import storeAdressAndMap from '../../../../../store/storeAdressAndMap'
 import { Objects } from '../../index'
-import useMapBlock from "./mapBlock.service";
+import useMapBlock from "./mapBlock.service"
 import C from './mapBlock.module.scss'
+import './mapBlockStatic.scss'
 
 import { YMaps, Map, Placemark, Clusterer } from '@pbe/react-yandex-maps';
 
@@ -20,7 +21,7 @@ export function MapBlock(props: {objects:Objects}) {
 		>
 			<Map 
 				state={state.mapState}
-				modules={['control.ZoomControl', 'control.FullscreenControl', 'geocode', 'layout.PieChart']}
+				modules={['control.ZoomControl', 'control.FullscreenControl', 'geocode', 'layout.PieChart', 'geoObject.addon.balloon', 'geoObject.addon.hint']}
 				onLoad={(el) => (api.initYmaps(el))}
 				className={C.map}
 			>
@@ -36,17 +37,27 @@ export function MapBlock(props: {objects:Objects}) {
 						iconPieChartCaptionMaxWidth: 20
 						}}
 					>
-						{objects.map(({coord, color}, index) =>
+						{objects.map(({coord, color, img, name}, index) =>
 							coord && <Placemark 
 								key={'point_' + index}
-								geometry={coord}						
-								options={
-									{preset: 'islands#circleIcon', iconColor:color,}
-								}
+								geometry={coord}					
+								options={{
+									preset: 'islands#circleIcon',
+									iconColor:color,
+									hideIconOnBalloonOpen: false,
+								}}
+								properties={{
+									iconContent: '',
+									hintContent: '',
+									balloonContent: `<div id="balloonContent" class="balloonContent">
+														<img src="${img}" alt="${name}" />
+														<p>${name}</p>
+													</div>`,
+								}}
 							/>)
-						}
+						}						
 					</Clusterer>				
-			</Map>
+			</Map>						
 		</YMaps>
 	)
 }

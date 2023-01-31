@@ -10,7 +10,7 @@ const useMapBlock:UseMapBlock = (objects:Objects) => {
 
 	const [coord, setCoord] = useState<Array<number[] | undefined>>([undefined, undefined])	
     const [center, setCenter] = useState<number[]>([59.938955, 30.315644])
-    const [zoom, setZoom] = useState(4)
+    const [zoom, setZoom] = useState(6)
 
 	const mapState = {
 		center: center,
@@ -21,6 +21,7 @@ const useMapBlock:UseMapBlock = (objects:Objects) => {
     const initYmaps = (el: typeofYmaps) => {
         setYmaps(el)
     }
+
   
     let arrayOfObjects = objects
 
@@ -28,7 +29,7 @@ const useMapBlock:UseMapBlock = (objects:Objects) => {
     const state = {
         Ymaps: Ymaps,
         mapState: mapState,
-        arrayOfObjects: arrayOfObjects
+        arrayOfObjects: arrayOfObjects,
     }
 
     const api = {

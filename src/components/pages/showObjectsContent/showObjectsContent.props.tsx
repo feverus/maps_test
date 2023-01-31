@@ -10,12 +10,13 @@ export type ObjectsItem = {
     gone: number,
     description: string,
     color: string,
+    img: string,
 }
 
 export type Objects = Array<ObjectsItem>
 
 export type StateType = {
-    objects: Objects
+    objects: Objects,
 }
 
 export type ApiType = {
