@@ -1,8 +1,9 @@
-import { DatePicker, CheckPicker, RadioGroup, Radio } from 'rsuite'
+import { DatePicker, CheckPicker } from 'rsuite'
 import "rsuite/dist/rsuite.css";
 import useShowObjectsContent from "./showObjectsContent.service";
 import C from './showObjectsContent.module.scss'
-import MapBlock from './components/mapBlock';
+import MapBlock from './components/mapBlock'
+import ObjectList from './components/objectList'
 import storeShowObjectsContent from "../../../store/storeShowObjectsContent";
 
 const handleActivityDirection = (e: string[])=>storeShowObjectsContent.setSelectedCategorys(e)
@@ -45,7 +46,7 @@ export function ShowObjectsContent() {
 			</div>
 
 			<div className={C.objectList}>
-
+				<ObjectList />
 			</div>
 			
 			<MapBlock objects={storeShowObjectsContent.arrayOfObjects}  />

@@ -21,14 +21,16 @@ const template = {
 
 export const objects:Objects = [];
 
-for (let index = 0; index < 100; index++) {
+const countMockData = randomInt(100, 200)
+
+for (let index = 0; index < countMockData; index++) {
     const category = randomInt(0, colors.length-1)
     objects.push({id:index.toString(), 
                     coord: [random(55, 60), random(30, 40)],
                     color: colors[category],
                     category: categorys[category],
                     adress: adressArr[randomInt(0, adressArr.length-1)],
-                    img: `media/objects-preview/${(1 + index % 5)}.jpg`,
+                    img: `media/objects-preview/${randomInt(1, 5)}.jpg`,
                     stars: randomInt(0, 50) / 10,
                     likes: randomInt(0, 100),
                     feed: randomInt(0, 100),
