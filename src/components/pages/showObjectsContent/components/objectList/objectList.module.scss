@@ -1,7 +1,7 @@
 @import '../../../../../global.modules.scss';
 
 .header {
-    background-color: #DFE6EB;
+    background-color: $backColor;
     min-height: 50px;
     display: flex;
     flex-wrap: wrap;
@@ -13,11 +13,12 @@
         justify-content: center;
     }
     *, p{
-        color: #212121;
+        color: $mainTextColor;
         font-weight: 500;
         font-size: 18px;
         line-height: 22px;
     }
+    span {margin-left: 10px;}
     .textShow {
         font-size: 14px;
     }
@@ -38,7 +39,7 @@
         background-color: transparent;  
         &>div {border: none;}
         *{
-            color: #212121 !important;
+            color: $mainTextColor !important;
             font-weight: 400;
             font-size: 16px;
             line-height: 22px;
@@ -49,14 +50,15 @@
     .expand {
         width: 30px;
         height: 30px;
-        background: #DFE6EB url('media/expand.svg') center center no-repeat;
+        background: $backColor url('media/expand.svg') center center no-repeat;
         position: absolute;
-        left: calc(50% - 15px);
+        left: 50%;
         z-index: 1;
         transition: all 0.5s ease-out;
         &:hover {
             background-color: #888e92;
         }
+        @media (max-width: 800px) {display: none;}
     }
 }
 
@@ -65,16 +67,25 @@
     overflow-y: scroll;
     
     .card {
+        align-items: flex-start;
         min-height: 160px;
         display: flex;
-        color: #212121;
+        color: $mainTextColor;
         overflow: hidden;
-        box-shadow: 0px 1px 0px #DFE6EB;
+        box-shadow: 0px 1px 0px $backColor;
         img {
-            height: 140px;
+            object-fit: contain;
             width: 180px;
             border-radius: 2px;
-            margin: 10px;               
+            margin: 10px;   
+            @media (max-width: 800px) {
+                margin-left: 0;
+                width: 120px;
+            }            
+        }
+        .h {
+            display: flex;
+            flex-wrap: wrap;
         }
         h2 {        
             font-weight: 500;
@@ -85,14 +96,16 @@
             text-overflow: ellipsis;
             width: calc(50vw - 240px);
             margin-bottom: 10px;
+            @media (max-width: 800px) {width: 100%;}
         }
         h3 {
             font-weight: 500;
             font-size: 14px;
             line-height: 20px;
-            color: #8494A1;
-            display: inline;
+            color: $shadowColor;
+            display: block;
             margin-right: 12px;
+            &:nth-child(2) {flex: 1 1 200px;}
         }
         >div {
             padding: 15px 0;
@@ -106,7 +119,7 @@
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 20px;
-                color: #212121;
+                color: $mainTextColor;
             }
             .star, .fav {
                 position: relative;
@@ -124,7 +137,7 @@
             .star {
                 &:before {
                     @extend .icon;
-                    top: 3px;
+                    top: 2px;
                     background: url('media/star.svg') center center no-repeat;
                 }
             }
@@ -136,8 +149,9 @@
                     background: url('media/fav.svg') center center no-repeat;
                 }
             }
-            .feed {
+            .feed, .gone {
                 margin-right: 12px;
+                flex: 0 1 auto;
             }
         }
         .description {
@@ -147,25 +161,30 @@
             line-height: 20px;
             overflow: hidden;
             height: 40px;
+            @media (max-width: 800px) {
+                position: relative;
+                left: -130px;
+                width: min(calc(200% - 0px), calc(100vw - 30px));
+            }
         }
     }
 }
 
 .pagination {
     height: 50px;
-    background-color: #DFE6EB;
+    background-color: $backColor;
     display: flex;
     align-items: center;
     justify-content: center;
     * {
         border: none !important;
-        color: #82949F;
+        color: $grayColor;
         font-weight: 500;
         font-size: 18px;
         line-height: 22px;
     }
     [class$=rs-pagination-btn-active] {
-        color: #212121 !important;
+        color: $mainTextColor !important;
     }
     button {
         [class$=rs-pagination-symbol] { >svg {

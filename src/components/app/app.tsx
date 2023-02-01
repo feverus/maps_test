@@ -1,13 +1,14 @@
+import {Link} from 'react-router-dom'
+
 import C from './app.module.scss'
 import AdressAndMapContent from '../pages/adressAndMapContent'
 import ShowObjectsContent from '../pages/showObjectsContent'
 import Header from '../header'
 import Sidebar from '../sidebar'
-import footer from '../footer'
-import {Link} from 'react-router-dom'
 import { Footer } from '../footer/footer'
 
 export function App(props: {page:string}) {
+	
 	if (props.page==='/') return (
 		<section className={C.main}>
 			<div className={C.testNavigation}>
@@ -33,9 +34,8 @@ export function App(props: {page:string}) {
 			</div>}
 
 			{props.page==='offers' && 
-			<div className={C.fullwidth}>
 				<ShowObjectsContent />
-			</div>}
+			}
 
 			<Footer />	
 

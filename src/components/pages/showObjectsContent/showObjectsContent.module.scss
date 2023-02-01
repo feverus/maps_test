@@ -8,7 +8,7 @@
     border-radius: 2px;           
     &>div {border: none;}
     *{
-        color: #212121;
+        color: $mainTextColor;
         font-weight: 400;
         font-size: 16px;
         line-height: 22px;
@@ -59,10 +59,11 @@ main.fullwidth {
     .objectList {
         width: 50%;
     }
-}
-
-@media (max-width: 800px) {
-    main {
-        padding: 32px 15px 0 15px;
+    @media (max-width: 800px) {
+        padding: 0 15px 0 15px;
+        .objectList {
+            width: 100%;
+        }
     }
 }
+

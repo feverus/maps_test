@@ -1,10 +1,10 @@
 import { DatePicker, CheckPicker } from 'rsuite'
-import "rsuite/dist/rsuite.css";
-import useShowObjectsContent from "./showObjectsContent.service";
+import "rsuite/dist/rsuite.css"
+
 import C from './showObjectsContent.module.scss'
 import MapBlock from './components/mapBlock'
 import ObjectList from './components/objectList'
-import storeShowObjectsContent from "../../../store/storeShowObjectsContent";
+import storeShowObjectsContent from "../../../store/storeShowObjectsContent"
 
 const handleActivityDirection = (e: string[])=>storeShowObjectsContent.setSelectedCategorys(e)
 
@@ -13,11 +13,8 @@ const checkPickerData = storeShowObjectsContent.categorys.map(
 )
 
 export function ShowObjectsContent() {
-	const [state, api] = useShowObjectsContent() 
-
-
 	return (
-		<main  className={C.fullwidth}>
+		<main className={C.fullwidth}>
 			<div className={C.filter}>
     			<DatePicker placeholder="Не задано" className={C.dataPicker} />
 				<DatePicker placeholder="Не задано" className={C.dataPicker} />	

@@ -1,6 +1,5 @@
 import {makeAutoObservable, observable, action} from 'mobx';
-import {geoObject} from './storeInterfaces'
-import { Objects } from '../components/pages/showObjectsContent'
+import {Objects} from './storeInterfaces'
 import {objects, categorys} from './objects'
 
 export class StoreShowObjectsContent {

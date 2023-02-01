@@ -25,15 +25,14 @@ header {
         height: 40px;
         background: none;
         margin-right: 21px;
-        color: #3DABF7;
+        color: $menuMainColor;
         font-weight: 600;
         font-size: 16px;
-        line-height: 40px;
         display: flex;
         align-items: center;
         &:hover {
-            color: #74c5ff;
-            svg {path {stroke: #74c5ff;}}
+            color: $headerButtonHoverColor;
+            svg {path {stroke: $headerButtonHoverColor;}}
         }
     }
 
@@ -44,8 +43,9 @@ header {
         justify-content: flex-end;
         p {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            color: rgba(61, 171, 247, 1);
+            color: $menuMainColor;
             font-weight: 600;
             font-size: 16px;
             line-height: 19px;
@@ -61,16 +61,16 @@ header {
             svg {
                 height: 16px;
                 margin: 10px;
-                margin: 15px 10px 0;
+                margin: 6px 10px 0;
             }
         }
         .allOrder {
-            background: #3DABF7;
+            background: $menuMainColor;
             border-radius: 2px;
             color: #ffffff;
         }
         .society, .aboutProject {
-            svg {path {fill: #3DABF7;}}
+            svg {path {fill: $menuMainColor;}}
         }
         
         
@@ -129,7 +129,7 @@ header {
         }
         button.reg {
             @extend .headerButton;
-            border: 1px solid #3DABF7;
+            border: 1px solid $menuMainColor;
             border-radius: 2px;
         }
     }

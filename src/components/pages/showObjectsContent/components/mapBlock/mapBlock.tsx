@@ -1,5 +1,5 @@
-import storeAdressAndMap from '../../../../../store/storeAdressAndMap'
-import { Objects } from '../../index'
+import { Objects } from '../../../../../store/storeInterfaces'
+
 import useMapBlock from "./mapBlock.service"
 import C from './mapBlock.module.scss'
 import './mapBlockStatic.scss'

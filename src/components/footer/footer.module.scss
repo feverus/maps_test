@@ -1,19 +1,23 @@
 @import '../../global.modules.scss';
 
 footer {
-    background-color: #0E1D27;
+    background-color: $darkColor;
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
-    color: #82949F;
+    color: $grayColor;
     .all {
         min-height: 346px;
-        border-bottom: 0.5px solid #8494A1;
+        border-bottom: 0.5px solid $shadowColor;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: space-evenly;
+        @media (max-width: 840px) {
+            flex-direction: column;
+            align-items: center;
+        }
         >div {
             width: 320px;
             display: flex;
@@ -35,9 +39,12 @@ footer {
             justify-content: flex-end;
             padding: 50px 15px 0 50px;
             flex: 0 1 calc(100% - 320px);
-            div {
-                width: min(33%, 250px);
+            @media (max-width: 840px) {
+                flex: 1 1 100%;
+                padding: 50px 15px;
+                div {padding-bottom: 40px;}
             }
+            div {flex: 1 1 min(33%, 250px);}
             h2 {
                 color: #FFFFFF;
                 font-weight: 500;

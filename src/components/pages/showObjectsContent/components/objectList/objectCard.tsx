@@ -1,19 +1,21 @@
 import C from './objectList.module.scss'
-import { ObjectsItem } from '../../index'
+import { ObjectsItem } from '../../../../../store/storeInterfaces'
 
 export const ObjectCard = (props: { object: ObjectsItem; }) => {
 	const o = props.object;
 	return (
 		<div className={C.card}>
 			<img src={o.img} alt={o.name} />
-			<div>
+			<div>						
 				<h2>{o.name}</h2>
-				<h3>{o.adress}</h3><h3>{o.category}</h3>
+				<div className={C.h}>
+					<h3>{o.adress}</h3><h3>{o.category}</h3>
+				</div>				
 				<div className={C.inlineInfo}>
 					<p className={C.star}>{o.stars}</p>
 					<p className={C.fav}>{o.likes}</p>
 					<p className={C.feed}>Отзывов: {o.feed}</p>
-					<p>Отправилось: {o.gone}</p>
+					<p className={C.gone}>Отправилось: {o.gone}</p>
 				</div>
 				<p className={C.description}>{o.description}</p>
 			</div>

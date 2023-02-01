@@ -5,4 +5,4 @@ export default
 	inject('storeShowObjectsContent')
 	(observer(ShowObjectsContent));
 
-export type { StateType, ApiType, UseShowObjectsContent, Objects, ObjectsItem } from './showObjectsContent.props'
+export type { StateType, ApiType, UseShowObjectsContent } from './showObjectsContent.props'

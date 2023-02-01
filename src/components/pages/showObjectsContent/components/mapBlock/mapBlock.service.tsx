@@ -1,21 +1,15 @@
-import { useState, useEffect, useMemo } from 'react'
-import { Objects, ObjectsItem } from '../../showObjectsContent.props'
-import * as I from '../../../../../store/storeInterfaces'
+import { useState, useEffect } from 'react'
+import { Objects } from '../../../../../store/storeInterfaces'
 import storeShowObjectsContent from '../../../../../store/storeShowObjectsContent'
-import { UseMapBlock, typeofYmaps, findedType } from './mapBlock.props'
+import { UseMapBlock, typeofYmaps } from './mapBlock.props'
 
 
 const useMapBlock:UseMapBlock = (objects:Objects) => {   	
     const [Ymaps, setYmaps] = useState<typeofYmaps|null>(null)
 
-	const [coord, setCoord] = useState<Array<number[] | undefined>>([undefined, undefined])	
-    const [center, setCenter] = useState<number[]>([59.938955, 30.315644])
     const [bounds, setBounds] = useState<Array<number[]> | undefined>(undefined)
-    const [zoom, setZoom] = useState(6)
 
 	const mapState = {
-		center: center,
-		zoom: zoom,
 		controls: ['zoomControl', 'fullscreenControl'],
         bounds:	bounds,
 	}

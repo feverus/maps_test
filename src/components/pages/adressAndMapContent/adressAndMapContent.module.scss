@@ -7,7 +7,7 @@ main {
         font-weight: 400;
         font-size: 26px;
         line-height: 32px;
-        color: #212121;  
+        color: $mainTextColor;  
         margin: 0 0 39px;
         padding: 0;  
     }
@@ -15,7 +15,7 @@ main {
         font-weight: 700;
         font-size: 12px;
         line-height: 22px;
-        color: rgba(132, 148, 161, 1);
+        color: $shadowColor;
         margin: 0;
     }
     .adress {margin-bottom: 22px;}
@@ -23,16 +23,18 @@ main {
     input {
         border: none;
         display: block;
-        border-bottom: 1px solid #82949F;
+        border-bottom: 1px solid $grayColor;
         width: min(833px, calc(100% - 30px));
+        @media (max-width: 840px) {width: 100%;}
         line-height: 36px;
         &:focus-visible {outline: none;}
     }
     .forward {
         height: 50px;
         width: min(380px, calc(100% - 30px));
+        @media (max-width: 840px) {width: 100%;}
         border-radius: 2px;
-        background: #3DABF7;
+        background: $menuMainColor;
         border: none;
         margin: 83px 0 20px;
         color: #FFFFFF;
@@ -40,14 +42,12 @@ main {
         font-size: 16px;
         line-height: 22px;
         &:hover {
-            background: #149bfc;
+            background: $hoverColor;
             cursor: pointer;
         }
     }
 }
 
 @media (max-width: 800px) {
-    main {
-        padding: 32px 15px 0 15px;
-    }
+    main {padding: 32px 15px 0 15px;}
 }
