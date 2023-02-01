@@ -17,8 +17,7 @@
 }
 
 main.fullwidth {
-    grid-area: full;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     display: flex;
@@ -58,7 +57,7 @@ main.fullwidth {
         }
     }
     .objectList {
-        width: calc(50% - 15px);
+        width: 50%;
     }
 }
 

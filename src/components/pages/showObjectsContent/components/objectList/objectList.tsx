@@ -32,7 +32,7 @@ export function ObjectList() {
 		<>
 		<div className={C.header}>
 			<p>{storeShowObjectsContent.arrayOfObjects.length + ' ' + variantov}</p>
-			<Toggle />
+			<Toggle  size="md"/>
 			<p className={C.textShow}>Показать прошедшие</p>
 			<SelectPicker
 				value={'newFirst'}
@@ -40,6 +40,7 @@ export function ObjectList() {
 				data={checkPickerData} 
 				className={C.checkFirst}
 			/>
+			<button className={C.expand}></button>
 		</div>
 
 		<div className={C.cardList}>
@@ -53,12 +54,14 @@ export function ObjectList() {
 			ellipsis
 			last
 			first
+			boundaryLinks
 			size="lg"
 			total={objectCount}
 			limit={10}
 			activePage={activePage}
 			onChangePage={setActivePage}
-			maxButtons={5}
+			maxButtons={3}
+			className={C.pagination}
 		/>
 		</>
 	)

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import C from './customSelect.module.scss';
 import Select from 'react-select';
-import { selectOptions, selectStyles, DropdownIndicator } from './selectService';
+import { selectOptions, selectStyles, selectStylesDark, DropdownIndicator } from './selectService';
 
-export function CustomSelect() {
+export function CustomSelect(props: {dark: boolean}) {
 	const [selectedOption, setSelectedOption] = useState({ value: 'ru', label: 'RU', color:'' })
 
 	return (
@@ -12,7 +12,7 @@ export function CustomSelect() {
 			defaultValue={selectedOption}
 			onChange={(e) => setSelectedOption}
 			options={selectOptions}
-			styles={selectStyles}
+			styles={props.dark ? selectStylesDark: selectStyles}
 			components={{ DropdownIndicator }} 
 			isSearchable={false}
 			/>

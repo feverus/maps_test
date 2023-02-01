@@ -21,8 +21,9 @@
     .textShow {
         font-size: 14px;
     }
-    >:first-child{width: 200px;}
+    >:first-child{width: 190px;}
     label {
+        transform: scale(0.75, 0.75);
         margin-right: 10px;
         color: white;
         input, span {color: white;}
@@ -34,15 +35,27 @@
         margin-right: 10px;          
         border: 1px solid #CBD3D8;
         border-radius: 2px;    
-        background-color: transparent;       
+        background-color: transparent;  
         &>div {border: none;}
         *{
-            color: #212121;
+            color: #212121 !important;
             font-weight: 400;
             font-size: 16px;
             line-height: 22px;
             box-shadow: none;
             background-color: transparent !important;
+        }
+    }
+    .expand {
+        width: 30px;
+        height: 30px;
+        background: #DFE6EB url('media/expand.svg') center center no-repeat;
+        position: absolute;
+        left: calc(50% - 15px);
+        z-index: 1;
+        transition: all 0.5s ease-out;
+        &:hover {
+            background-color: #888e92;
         }
     }
 }
@@ -134,6 +147,59 @@
             line-height: 20px;
             overflow: hidden;
             height: 40px;
+        }
+    }
+}
+
+.pagination {
+    height: 50px;
+    background-color: #DFE6EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    * {
+        border: none !important;
+        color: #82949F;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    [class$=rs-pagination-btn-active] {
+        color: #212121 !important;
+    }
+    button {
+        [class$=rs-pagination-symbol] { >svg {
+            position: absolute;
+            bottom: 6px;
+        }}
+    }  
+    button:first-child { [class$=rs-pagination-symbol] {
+        background: url('media/expand.svg') center center no-repeat;
+        transform: rotate(180deg);
+        width: 22px;
+        >svg {opacity: 0;}
+    }}
+    button:last-child { [class$=rs-pagination-symbol] {
+        background: url('media/expand.svg') center center no-repeat;
+        width: 22px;
+        >svg {opacity: 0;}
+    }}
+    button:first-child, button:last-child {
+        &[class$=rs-pagination-btn-disabled] {
+            opacity: 0.2;
+        }
+    }
+
+    >div {
+        flex: 1 1 100%;
+        display: flex;
+        button {
+            &:first-child, &:last-child {
+                flex:1;
+                display: flex;
+            }
+            &:first-child {justify-content: flex-start;}
+            &:last-child {justify-content: flex-end;}
         }
     }
 }

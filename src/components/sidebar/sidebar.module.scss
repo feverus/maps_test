@@ -32,7 +32,10 @@ aside {
             }
             &.active {
                 svg{
-                   path {stroke: rgba(255, 255, 255, 1);fill: transparent;}
+                    path {
+                        stroke: rgba(255, 255, 255, 1);
+                        fill: transparent;
+                    }
                 }
                 span {
                     color:rgba(255, 255, 255, 1);

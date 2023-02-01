@@ -2,18 +2,18 @@ import C from './header.module.scss'
 import { Props } from './header.props'
 import logoImage from './media/logo-image.svg'
 import logoText from './media/logo-text.svg'
-
+import { ReactSVG } from 'react-svg'
 import { CustomSelect } from './components/customSelect'
 
 export function Header(props:Props) {
 
-
+	
 	return (
 		<header>
             <div className={C.logo}>
                 <img src={logoImage} alt="Logo" className={C.image}/>
                 <img src={logoText} alt="Logo text" className={C.text}/>
-				<CustomSelect />
+				<CustomSelect dark={false} />
             </div>
 
             <nav className={C.menu}>
@@ -21,6 +21,14 @@ export function Header(props:Props) {
 				<p>
 					<img src={props.menuOptions.pageLogo} alt="Лого заголовка страницы" />
 					Природный парк "Вулканы камчатки"
+				</p>
+				}                
+				{props.menuOptions.page==='offers' &&
+				<p>
+					<button className={C.allOrder}>Все предложения <ReactSVG src='media/searchGlass.svg' /></button>
+					<button className={C.society}>Сообщество
+					<ReactSVG src='media/rectangle.svg' /></button>
+					<button className={C.aboutProject}>О проекте<ReactSVG src='media/rectangle.svg' /></button>
 				</p>
 				}                
             </nav>
@@ -42,8 +50,8 @@ export function Header(props:Props) {
 				</>
             ) : (
 				<>
-                    <button>Вход</button>
-                    <button>Регистрация</button>
+                    <button className={C.auth}>Вход</button>
+                    <button className={C.reg}>Регистрация</button>
 				</>
             )}
 			</div>

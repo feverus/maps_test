@@ -3,7 +3,9 @@ import AdressAndMapContent from '../pages/adressAndMapContent'
 import ShowObjectsContent from '../pages/showObjectsContent'
 import Header from '../header'
 import Sidebar from '../sidebar'
+import footer from '../footer'
 import {Link} from 'react-router-dom'
+import { Footer } from '../footer/footer'
 
 export function App(props: {page:string}) {
 	if (props.page==='/') return (
@@ -21,13 +23,21 @@ export function App(props: {page:string}) {
 							page: props.page, 
 							pageLogo: 'media/menu-logo-vulkany-kamchatki.png'
 						}, 
-						isLoggedIn: true, 
+						isLoggedIn: (props.page==='add_offer'), 
 						avatar:'media/avatar-vladislav.png'}}
 			/>
-			
-			{props.page==='add_offer' && <><Sidebar/><AdressAndMapContent /></>}
 
-			{props.page==='offers' && <><ShowObjectsContent /></>}
+			{props.page==='add_offer' && 
+			<div className={C.withSidebar}>
+				<Sidebar/><AdressAndMapContent />
+			</div>}
+
+			{props.page==='offers' && 
+			<div className={C.fullwidth}>
+				<ShowObjectsContent />
+			</div>}
+
+			<Footer />	
 
 		</section>		
 	)

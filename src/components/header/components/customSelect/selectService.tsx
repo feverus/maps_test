@@ -16,36 +16,72 @@ export const selectOptions = [
 ]
 
 export const selectStyles = {
-	control: (baseStyles: any) => ({
-		...baseStyles,
-		border: 'none', background: 'transparent', width: '33px', fontSize: '14px'
-	}),
-	valueContainer: (baseStyles: any) => ({
-		...baseStyles,
-		padding: '0'
-	}),
-	indicatorSeparator: (baseStyles: any) => ({
-		...baseStyles,
-		display: 'none'
-	}),
-	indicatorsContainer: (baseStyles: any) => ({
-		...baseStyles,
-		width: '12px'
-	}),
-	singleValue: (baseStyles: any) => ({
-		...baseStyles,
-		fontSize: '14px', width: '20px', color: '#212121', 
-	}),
-	menu: (baseStyles: any) => ({
-		...baseStyles,
-		fontSize: '12px', width: '33px', padding: '0'
-	}),
-	menuList: (baseStyles: any) => ({
-		...baseStyles,
-		padding: '2px 0', margin: '0'
-	}),
-	option: (baseStyles: any) => ({
-		...baseStyles,
-		padding: '2px 0', margin: '0', textAlign: 'center'
-	}),
+		control: (baseStyles: any) => ({
+			...baseStyles,
+			border: 'none', background: 'transparent', width: '33px', fontSize: '14px'
+		}),
+		valueContainer: (baseStyles: any) => ({
+			...baseStyles,
+			padding: '0'
+		}),
+		indicatorSeparator: (baseStyles: any) => ({
+			...baseStyles,
+			display: 'none'
+		}),
+		indicatorsContainer: (baseStyles: any) => ({
+			...baseStyles,
+			width: '12px'
+		}),
+		singleValue: (baseStyles: any) => ({
+			...baseStyles,
+			fontSize: '14px', width: '20px', color: '#212121', 
+		}),
+		menu: (baseStyles: any) => ({
+			...baseStyles,
+			fontSize: '12px', width: '33px', padding: '0'
+		}),
+		menuList: (baseStyles: any) => ({
+			...baseStyles,
+			padding: '2px 0', margin: '0'
+		}),
+		option: (baseStyles: any) => ({
+			...baseStyles,
+			padding: '2px 0', margin: '0', textAlign: 'center'
+		}),
+}
+
+export const selectStylesDark = {
+		control: (baseStyles: any) => ({
+			...baseStyles,
+			border: 'none', background: 'transparent', width: '33px', fontSize: '14px'
+		}),
+		valueContainer: (baseStyles: any) => ({
+			...baseStyles,
+			padding: '0'
+		}),
+		indicatorSeparator: (baseStyles: any) => ({
+			...baseStyles,
+			display: 'none'
+		}),
+		indicatorsContainer: (baseStyles: any) => ({
+			...baseStyles,
+			width: '12px',
+			filter: 'invert(1)',
+		}),
+		singleValue: (baseStyles: any) => ({
+			...baseStyles,
+			fontSize: '14px', width: '20px', color: '#ffffff', 
+		}),
+		menu: (baseStyles: any) => ({
+			...baseStyles,
+			fontSize: '12px', width: '33px', padding: '0'
+		}),
+		menuList: (baseStyles: any) => ({
+			...baseStyles,
+			padding: '2px 0', margin: '0'
+		}),
+		option: (baseStyles: any) => ({
+			...baseStyles,
+			padding: '2px 0', margin: '0', textAlign: 'center'
+		}),
 }
