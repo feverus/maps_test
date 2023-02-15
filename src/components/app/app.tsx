@@ -10,10 +10,10 @@ import { Footer } from '../footer/footer'
 export function App(props: {page:string}) {
 	
 	if (props.page==='/') return (
-		<section className={C.main}>
+		<section className={C.main + ' ' + C.blueBackground}>
 			<div className={C.testNavigation}>
-				<Link to={'/maps_test/adress-and-map'}>1) Страница с адресом и картой</Link>
-				<Link to={'/maps_test/show-objects-on-map'}>2) Отображение объектов на карте</Link>
+				<Link to={'/maps/adress-and-map'}>1) Страница с адресом и картой</Link>
+				<Link to={'/maps/show-objects-on-map'}>2) Отображение объектов на карте</Link>
 			</div>
 		</section>	
 	)

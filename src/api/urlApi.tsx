@@ -1,3 +1,3 @@
-const urlApi="https://evgeny.lol/maps_test/";
+const urlApi="https://evgeny.lol/maps/";
 
 export default urlApi;

@@ -1,11 +1,8 @@
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom/client'
 import { Provider } from 'mobx-react'
-import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Link,
 } from "react-router-dom";
 
 import App from './components/app';
@@ -25,15 +22,15 @@ const router = createBrowserRouter([
     element: <App page='/' />,
   },
   {
-    path: "maps_test/",
+    path: "maps/",
     element: <App page='/' />,
   },
   {
-    path: "maps_test/adress-and-map",
+    path: "maps/adress-and-map",
     element: <App page='add_offer' />
   },
   {
-    path: "maps_test/show-objects-on-map",
+    path: "maps/show-objects-on-map",
     element: <App page='offers' />
   }
 ]);
