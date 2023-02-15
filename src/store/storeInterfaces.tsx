@@ -15,6 +15,7 @@ export type ObjectsItem = {
     description: string,
     color: string,
     img: string,
+    date: number,
 }
 
 export type Objects = Array<ObjectsItem>

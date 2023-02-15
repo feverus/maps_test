@@ -46,6 +46,8 @@ for (let index = 0; index < countMockData; index++) {
     const range = getRange(yRand, 30, 100, 55)
     const xRand = random(range.xMin, range.xMax)
 
+    const now = new Date()
+
     objects.push({id:index.toString(), 
                     coord: [xRand, yRand],
                     color: colors[category],
@@ -57,5 +59,6 @@ for (let index = 0; index < countMockData; index++) {
                     feed: randomInt(0, 100),
                     gone: randomInt(0, 100),
                     name: names[randomInt(0, names.length-1)],
+                    date: now.getTime() + randomInt(-31536000000, 31536000000),
                     ...template})    
 }
