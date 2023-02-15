@@ -1,7 +1,8 @@
+import {Link} from 'react-router-dom'
+
 import C from './header.module.scss'
 import { Props } from './header.props'
-import logoImage from './media/logo-image.svg'
-import logoText from './media/logo-text.svg'
+import logoImage from './media/logo-image.png'
 import { ReactSVG } from 'react-svg'
 import { CustomSelect } from './components/customSelect'
 
@@ -11,8 +12,7 @@ export function Header(props:Props) {
 	return (
 		<header>
             <div className={C.logo}>
-                <img src={logoImage} alt="Logo" className={C.image}/>
-                <img src={logoText} alt="Logo text" className={C.text}/>
+				<Link to={'/maps/'}><img src={logoImage} alt="Logo" className={C.image}/></Link>
 				<CustomSelect dark={false} />
             </div>
 

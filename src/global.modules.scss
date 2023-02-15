@@ -6,3 +6,23 @@ $hoverColor: #149bfc;
 $headerButtonHoverColor: #74c5ff;
 $mainTextColor: #212121;
 $backColor: #DFE6EB;
+$headerBgColor: #e6e4e4;
+
+.bigButton {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius: 2px;
+    background: $menuMainColor;
+    border: none;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    &:hover {
+        background: $hoverColor;
+        cursor: pointer;
+    }        
+}

@@ -29,25 +29,9 @@
     justify-content: center;
     height: 100vh;
     a {
+        @extend .bigButton;
         margin: 20px 0;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50px;
-        width: min(380px, 90%);
-        border-radius: 2px;
-        background: $menuMainColor;
-        border: none;
-        color: #FFFFFF;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 22px;
-        &:hover {
-            background: $hoverColor;
-            cursor: pointer;
-        }
-        
+        width: min(380px, 90%);     
     }
 }
 

@@ -1,10 +1,11 @@
 import C from './footer.module.scss'
-import logo from './media/logo.svg'
+import logo from './media/logo-image.png'
 import vk from './media/vk.svg'
 import telegram from './media/telegram.svg'
 import insta from './media/insta.svg'
 import fb from './media/fb.svg'
 import { CustomSelect } from '../header'
+import { ReactSVG } from 'react-svg'
 
 export function Footer() {
 	return (
@@ -14,7 +15,10 @@ export function Footer() {
 					<img src={logo} alt="Logo" className={C.image}/>
 					<CustomSelect dark={true} />
 					<div className={C.social}>
-						<img src={insta} alt="insta" /><img src={telegram} alt={telegram} /><img src={vk} alt="vk" /><img src={fb} alt="fb" />
+						<ReactSVG src={insta}/>
+						<ReactSVG src={telegram}/>
+						<ReactSVG src={vk}/>
+						<ReactSVG src={fb}/>
 					</div>
 					<div className={C.link}>
 						<button>Напишите нам</button>
@@ -56,7 +60,7 @@ export function Footer() {
 				</nav>
 			</section>
 			<section className={C.copyright}>
-				© GoodSurfing, 2017-2021
+				© {window.location.hostname}, 2022-{new Date().getFullYear()}
 			</section>
         </footer>	
 	)

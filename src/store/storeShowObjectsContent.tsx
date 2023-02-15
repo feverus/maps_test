@@ -1,11 +1,12 @@
 import {makeAutoObservable, observable, action} from 'mobx';
 import {Objects} from './storeInterfaces'
-import {objects, categorys} from './objects'
+import {objects, categorys, colors} from './objects'
 
 export class StoreShowObjectsContent {
     arrayOfObjects: Objects = objects
     defaultArrayOfObjects: Objects = objects
     categorys = categorys
+    colors = colors
     selectedCategorys:string[] = []
 
     constructor() {

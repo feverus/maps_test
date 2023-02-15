@@ -6,7 +6,7 @@ export class StoreAdressAndMap {
     nearCity:string = ''
     lastFieldChanged:number = 0
 
-    dataFromApi: Array<geoObject | undefined> = [undefined, undefined]
+    dataFromApi: geoObject | undefined = undefined
 
     constructor() {
         makeAutoObservable(this, {
@@ -26,10 +26,9 @@ export class StoreAdressAndMap {
         this.nearCity = newData
         this.lastFieldChanged = 1
     }
-    setDataFromApi(newData:geoObject | undefined, field: number) {
-        let copy = [...this.dataFromApi]
-        copy[field] = newData
-        this.dataFromApi = copy
+    setDataFromApi(newData:geoObject | undefined) {
+        if (newData!==undefined)
+            this.dataFromApi = JSON.parse(JSON.stringify(newData))
     }
 }
 

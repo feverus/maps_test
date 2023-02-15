@@ -5,6 +5,7 @@ import {getApi} from '../../../../../api/getApi'
 import {uploadApi} from '../../../../../api/uploadApi'
 import {deleteApi} from '../../../../../api/deleteApi'
 import { UseMapBlock, typeofYmaps, findedType } from './mapBlock.props'
+import { cities, findCitiesCoord, findNearCity } from '../../../../../store/cities'
 
 const useMapBlock:UseMapBlock = () => {   	
     const [Ymaps, setYmaps] = useState<typeofYmaps|null>(null)
@@ -22,7 +23,7 @@ const useMapBlock:UseMapBlock = () => {
 	}
 
     const PLacemarkColors = [
-        '#206010', '#105060'
+        '#40a020', '#992222'
     ]
 
     const initYmaps = (el: typeofYmaps) => {
@@ -37,22 +38,18 @@ const useMapBlock:UseMapBlock = () => {
                 const finded:findedType = JSON.parse(JSON.stringify(result)).GeoObjectCollection    
 
                 if (finded.metaDataProperty.GeocoderResponseMetaData.found as number>0) {
-                      storeAdressAndMap.setDataFromApi(finded.featureMember[0], index)
+                      storeAdressAndMap.setDataFromApi(finded.featureMember[0])
                 }
             })
             .catch(()=>console.log('Ошибка обработки ответа от api'))
 		} else {
-            storeAdressAndMap.setDataFromApi(undefined, index)
+            storeAdressAndMap.setDataFromApi(undefined)
         }
     }
 
     useEffect(() => {
         getNewGeoCode(storeAdressAndMap.adress, 0)
     }, [storeAdressAndMap.adress])
-
-    useEffect(() => {
-        getNewGeoCode(storeAdressAndMap.nearCity, 1)
-    }, [storeAdressAndMap.nearCity])
 
     const geoObjectToCoord = (geo: I.geoObject | undefined) => {
         if (geo!==undefined) {
@@ -66,9 +63,17 @@ const useMapBlock:UseMapBlock = () => {
     }
 
     useEffect(() => {
-		setCoord(storeAdressAndMap.dataFromApi.map(
-            geo => geoObjectToCoord(geo)
-        ))
+        const userInputCoord = geoObjectToCoord(storeAdressAndMap.dataFromApi)
+        const nearCity = (userInputCoord!==undefined) ?
+            findNearCity(userInputCoord) :
+            undefined
+
+		setCoord([
+            userInputCoord, 
+            (nearCity!==undefined) ? findCitiesCoord(nearCity) : undefined
+        ])
+
+        nearCity!==undefined && storeAdressAndMap.setNearCity(nearCity)
     }, [storeAdressAndMap.dataFromApi])
 
     useEffect(() => {        
@@ -85,6 +90,7 @@ const useMapBlock:UseMapBlock = () => {
                     c[0][1] = c[1][1]
                     c[1][1] = temp
                 }                
+                
                 
                 setBounds(c)
             } else {

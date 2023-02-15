@@ -24,10 +24,19 @@ footer {
             flex-direction: row;
             flex-wrap: wrap;
             padding: 42px 0 0 50px;
-            .social {
+            .social {                
                 flex: 1 1 100%;
                 margin-top: 46px;
-                img {margin-right: 18px;}
+                display: flex;
+                >div {
+                    padding-right: 18px;
+                    svg:hover {
+                        path {
+                            fill: $hoverColor;
+                            transition: all 0.5s ease-out;
+                        }
+                    }
+                }             
             }
             .link {margin-top: 16px;}
         }
@@ -56,6 +65,11 @@ footer {
                 list-style: none;
                 padding: 0;
                 margin: 0;
+                &:hover {
+                    button:not(:hover) {
+                        opacity: 0.5;
+                    }
+                }
             }
         }
     }
@@ -68,14 +82,14 @@ footer {
 
 
     button {
+        width: 100%;
         border: none;
-        text-decoration: underline;
+        text-decoration: none;
         background: none;
         padding: 0;
         text-align: left;
         transition: color 0.5s ease-out;
-        &:hover {
-            color: #656e74;
-        }
+        transition: opacity 0.5s ease-out;
+        &:hover {color: $hoverColor;}
     }
 }

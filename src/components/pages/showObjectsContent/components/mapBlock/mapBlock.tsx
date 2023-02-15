@@ -27,7 +27,7 @@ export function MapBlock(props: {objects:Objects}) {
 			>
 					<Clusterer
 						options={{
-						gridSize: 2,
+						gridSize: 64,
 						clusterIconLayout: 'default#pieChart',
 						groupByCoordinates: false,
 						iconPieChartRadius: 18,

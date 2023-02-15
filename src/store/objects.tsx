@@ -8,60 +8,22 @@ function randomInt(min: number, max: number) {
     return Math.round(random(min, max))
 }
 
-function getRange(x: number, xMin = 50, xMax = 100, yStart = 30 ) {
-    if (x < xMin || x > xMax) x = xMin
+function getRange(y: number, yMin = 30, yMax = 60, xStart = 30 ) {
 
-    const k = (xMax - xMin) / 4.2
-    const xNorm = (((xMax + xMin) / 2) - x) / k
-    let yMin, yMax: number
+    let xMin, xMax: number
+    const center = (yMax + yMin)/2
     
-    console.log(xNorm)
+    xMax = xStart + Math.sqrt(((yMax - yMin)/2)**2 - (y - center)**2) / 2
+    xMin = xStart - Math.sqrt(((yMax - yMin)/2)**2 - (y - center)**2) / 2
 
-    switch (true) {
-        case xNorm < -1.755:
-            yMax = Math.sqrt(5 - xNorm^2)
-            break;
-        case xNorm < -0.45:
-            yMax = 1 + 1/8 * xNorm^2
-            break;
-        case xNorm < 0.45:
-            yMax = 1.4 + 0.1 * (xNorm * 8 * Math.sin(xNorm * 8))^3
-            break;
-        case xNorm < 1.755:
-            yMax = 1 + 1/8 * xNorm^2
-            break;
-        default:
-            yMax = Math.sqrt(5 - xNorm^2)
-            break;
-    }
-    switch (true) {
-        case xNorm < -1.58:
-            yMin = -1 * Math.tan(xNorm + 1) * (xNorm + 1.5)^2
-            break;
-        case xNorm < -0.8:
-            yMin = Math.sqrt(Math.cos(xNorm * 4 - 1.6)) / 2
-            break;
-        case xNorm < 0:
-            yMin = Math.sqrt(Math.cos(xNorm * 4 + 1.6)) / 2
-            break;
-        case xNorm < 0.8:
-            yMin = Math.sqrt(Math.cos(xNorm * 4 - 1.6)) / 2
-            break;    
-        case xNorm < 1.6:
-            yMin = Math.sqrt(Math.cos(xNorm * 4 + 1.6)) / 2
-            break;
-        default:
-            yMin = Math.tan(xNorm - 1) * (xNorm - 1.5)^2
-            break;
-    }
-
-    return({"yMin": yStart + yMin * k, "yMax": yStart + yMax * k})
+    
+    return({"xMin": xMin, "xMax": xMax})
 }
 
 
 
   
-const colors = ['#dfa9b6', '#C3A3E9', '#C6E7E6', '#6d5ef1', '#91A5B3', '#f0ee76', '#7BE0C6', '#E6C6E7']
+export const colors = ['#dd1010', '#ff7030', '#FFFF70', '#50f040', '#60d0e0', '#3040b0', '#a030b0', '#e010a0']
 
 export const categorys = ['Работа в хостеле', 'Работа на ферме', 'Работа с животными', 'Преподавание', 'Работа с детьми', 'Благотворительность', 'Спорт', 'Искусство', 'Другое...']
 
@@ -80,12 +42,12 @@ const countMockData = randomInt(1000, 2000)
 for (let index = 0; index < countMockData; index++) {
     const category = randomInt(0, colors.length-1)
 
-    const xRand = random(50, 80)
-    const range = getRange(xRand, 49.99, 80.99, 30)
-    const yRand = random(range.yMin, range.yMax)
+    const yRand = random(30, 100)
+    const range = getRange(yRand, 30, 100, 55)
+    const xRand = random(range.xMin, range.xMax)
 
     objects.push({id:index.toString(), 
-                    coord: [yRand, xRand],
+                    coord: [xRand, yRand],
                     color: colors[category],
                     category: categorys[category],
                     adress: adressArr[randomInt(0, adressArr.length-1)],

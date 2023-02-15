@@ -34,7 +34,7 @@ export function Sidebar() {
 				<span className={C.name}>Кристина</span>
 				<span className={C.text}>Ваш персональный помощник по работе с системой</span>
 				<button>Написать</button>
-				<span className={C.mail}>E-mail <a href="mailto:support@goodsurfing.org">support@goodsurfing.org</a></span>
+				<span className={C.mail}>E-mail <a href="mailto:support@{window.location.hostname}">support@{window.location.hostname}</a></span>
 			</div>
 		</aside>
 	)

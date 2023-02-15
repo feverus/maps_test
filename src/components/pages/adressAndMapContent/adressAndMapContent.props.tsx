@@ -3,12 +3,15 @@ import * as I from '../../../store/storeInterfaces';
 export type StateType = {
     adress: string;
     nearCity: string;
+    showModal: boolean;
+    dataForModal: string;
 };
 
 export type ApiType = {
     changeAdress: (value:string) => void;
     changeNearCity: (value:string) => void;
     clickForward: () => void;
+    toggleModal: () => void;
 };
 
 export type UseAdressAndMapContent = () => [

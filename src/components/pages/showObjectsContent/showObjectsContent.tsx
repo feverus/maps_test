@@ -24,6 +24,7 @@ export function ShowObjectsContent() {
 					value={storeShowObjectsContent.selectedCategorys} 
 					onChange={handleActivityDirection} 
 					data={checkPickerData} 
+					
 					className={C.activityDirection}
 				/>
 				<CheckPicker

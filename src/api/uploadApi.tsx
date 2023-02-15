@@ -4,7 +4,7 @@ import urlApi  from './urlApi';
 export const uploadApi = async (data:any): Promise<any|string> => {
 	
 	console.log('Отправка данных', data)
-
+/*
 	try {
 		const json:any = await ky.post(urlApi+"", {
 			json: data
@@ -13,4 +13,5 @@ export const uploadApi = async (data:any): Promise<any|string> => {
 	} catch (error) {
         return (error as Error).message
     }
+*/
 }
