@@ -5,6 +5,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import { CustomProvider as RsuiteProvider } from 'rsuite'
+import ruRu from 'rsuite/locales/ru_Ru'
+
 import App from './components/app';
 import storeAdressAndMap from './store/storeAdressAndMap'
 import storeShowObjectsContent from './store/storeShowObjectsContent'
@@ -41,6 +44,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider {...stores}>
-    <RouterProvider router={router} />
+    <RsuiteProvider locale={ruRu}>
+      <RouterProvider router={router} />
+    </RsuiteProvider>    
   </Provider>
 )

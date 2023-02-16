@@ -19,20 +19,6 @@ const useMapBlock:UseMapBlock = (objects:Objects) => {
     }
   
     useEffect(() => {        
-        const copy = storeShowObjectsContent.selectedCategorys
-        console.log(copy)
-        if (copy.length > 0) {
-            storeShowObjectsContent.setArrayOfObjects(
-                storeShowObjectsContent.defaultArrayOfObjects.filter(
-                    ({category}) => (copy.includes(category)===true)
-                )
-            ) 
-        } else {
-            storeShowObjectsContent.setArrayOfObjectsToDefault()
-        }
-    }, [storeShowObjectsContent.selectedCategorys])  
-
-    useEffect(() => {        
         let c:number[][] = storeShowObjectsContent.arrayOfObjects.map(el => el.coord)
         let min = [90, 180], max = [-90, -180]
         c.forEach(coord => {

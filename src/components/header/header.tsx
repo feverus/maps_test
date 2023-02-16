@@ -24,12 +24,12 @@ export function Header(props:Props) {
 				</p>
 				}                
 				{props.menuOptions.page==='offers' &&
-				<p>
+				<>
 					<button className={C.allOrder}>Все предложения <ReactSVG src='media/searchGlass.svg' /></button>
 					<button className={C.society}>Сообщество
 					<ReactSVG src='media/rectangle.svg' /></button>
 					<button className={C.aboutProject}>О проекте<ReactSVG src='media/rectangle.svg' /></button>
-				</p>
+				</>
 				}                
             </nav>
 

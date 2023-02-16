@@ -9,10 +9,6 @@ import { YMaps, Map, Placemark, Clusterer } from '@pbe/react-yandex-maps';
 export function MapBlock(props: {objects:Objects}) {
 	const [state, api] = useMapBlock(props.objects) 
 
-	console.log(state)
-
-	const objects = state.arrayOfObjects
-
 	return (
 		<YMaps
 			query={{
@@ -24,6 +20,7 @@ export function MapBlock(props: {objects:Objects}) {
 				modules={['control.ZoomControl', 'control.FullscreenControl', 'geocode', 'layout.PieChart', 'geoObject.addon.balloon', 'geoObject.addon.hint']}
 				onLoad={(el) => (api.initYmaps(el))}
 				className={C.map}
+				options={{minZoom: 3}}
 			>
 					<Clusterer
 						options={{
@@ -35,10 +32,10 @@ export function MapBlock(props: {objects:Objects}) {
 						iconPieChartCoreFillStyle: '#ffffff',
 						iconPieChartStrokeStyle: '#ffffff10',
 						iconPieChartStrokeWidth: 1,
-						iconPieChartCaptionMaxWidth: 20
+						iconPieChartCaptionMaxWidth: 20,						
 						}}
 					>
-						{objects.map(({coord, color, img, name}, index) =>
+						{state.arrayOfObjects.map(({coord, color, img, name}, index) =>
 							coord && <Placemark 
 								key={'point_' + index}
 								geometry={coord}					

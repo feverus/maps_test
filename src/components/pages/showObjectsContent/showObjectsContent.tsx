@@ -5,25 +5,31 @@ import C from './showObjectsContent.module.scss'
 import MapBlock from './components/mapBlock'
 import ObjectList from './components/objectList'
 import storeShowObjectsContent from "../../../store/storeShowObjectsContent"
+import useShowObjectsContent from './showObjectsContent.service'
 
-const handleActivityDirection = (e: string[])=>storeShowObjectsContent.setSelectedCategorys(e)
-
-const checkPickerData = storeShowObjectsContent.categorys.map(
-	item => ({ label: item, value: item })
-)
 
 export function ShowObjectsContent() {
+	const [state, api] = useShowObjectsContent()
+
 	return (
 		<main className={C.fullwidth}>
 			<div className={C.filter}>
-    			<DatePicker placeholder="Не задано" className={C.dataPicker} />
-				<DatePicker placeholder="Не задано" className={C.dataPicker} />	
+    			<DatePicker
+					placeholder="Не задано"
+					className={C.dataPicker}
+					onChange={api.handleStart}
+				/>
+				<DatePicker 
+					placeholder="Не задано" 
+					className={C.dataPicker} 
+					onChange={api.handleEnd}
+				/>	
 				<CheckPicker
 					placeholder="Направление деятельности"
 					searchable={false}
-					value={storeShowObjectsContent.selectedCategorys} 
-					onChange={handleActivityDirection} 
-					data={checkPickerData} 
+					value={state.selectedCategorys} 
+					onChange={api.handleActivityDirection} 
+					data={state.checkPickerData} 
 					
 					className={C.activityDirection}
 				/>

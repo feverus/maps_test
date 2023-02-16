@@ -2,48 +2,31 @@ import storeShowObjectsContent from "../../../../../store/storeShowObjectsConten
 import { ObjectCard } from "./objectCard"
 import { Toggle, SelectPicker, Pagination } from 'rsuite';
 import C from './objectList.module.scss'
-import { useState, useEffect } from "react";
-
-function declOfNum(n: number) {  
-	let text_forms = ['вариант', 'варианта', 'вариантов']
-    n = Math.abs(n) % 100
-    let n1 = n % 10
-    if (n > 10 && n < 20) { return text_forms[2] }
-    if (n1 > 1 && n1 < 5) { return text_forms[1] }
-    if (n1 === 1) { return text_forms[0] }
-    return text_forms[2]
-}
+import useObjectList from './objectLIst.service'
 
 export function ObjectList() {
-	
-	const objectCount = storeShowObjectsContent.arrayOfObjects.length
-	let variantov = declOfNum(storeShowObjectsContent.arrayOfObjects.length)
-
-	const checkPickerData = [{ label: 'Сначала новые', value: 'newFirst' },
-		{ label: 'Сначала старые', value: 'oldFirst' }]
-
-	const [activePage, setActivePage] = useState(1)
-
-	useEffect(
-		()=>setActivePage(1),
-		[storeShowObjectsContent.arrayOfObjects]
-	)
+	const [state, api] = useObjectList()
 
 	return (
 		<>
 		<div className={C.header}>
-			<p>{storeShowObjectsContent.arrayOfObjects.length + ' ' + variantov}</p>
+			<p>{storeShowObjectsContent.arrayOfObjects.length + ' ' + state.variantov}</p>
 
 			<span>
-				<Toggle  size="md"/>
+				<Toggle
+					size="md"
+					onChange={api.handleShowPast}
+				/>
 				<p className={C.textShow}>Показать прошедшие</p>
 			</span>
 
 			<SelectPicker
-				value={'newFirst'}
+				defaultValue={'oldFirst'}
 				searchable={false}
-				data={checkPickerData} 
+				data={state.checkPickerData} 
 				className={C.checkFirst}
+				onChange={api.handleNewFirst}
+				cleanable={false}
 			/>
 
 			<button className={C.expand}></button>
@@ -51,7 +34,7 @@ export function ObjectList() {
 
 		<div className={C.cardList}>
 			{storeShowObjectsContent.arrayOfObjects.map((o, index) => {
-				return (index >= (activePage-1)*10) && (index < (activePage*10)) && <ObjectCard object={o} key={o.id} />
+				return (index >= (state.activePage-1)*10) && (index < (state.activePage*10)) && <ObjectCard object={o} key={o.id} />
 				}			
 			)}
 		</div>
@@ -62,10 +45,10 @@ export function ObjectList() {
 			first
 			boundaryLinks
 			size="lg"
-			total={objectCount}
+			total={state.objectCount}
 			limit={10}
-			activePage={activePage}
-			onChangePage={setActivePage}
+			activePage={state.activePage}
+			onChangePage={api.setActivePage}
 			maxButtons={3}
 			className={C.pagination}
 		/>

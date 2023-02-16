@@ -74,8 +74,9 @@
         overflow: hidden;
         box-shadow: 0px 1px 0px $backColor;
         img {
-            object-fit: contain;
+            object-fit: cover;
             width: 180px;
+            height: 140px;
             border-radius: 2px;
             margin: 10px;   
             @media (max-width: 800px) {
@@ -92,7 +93,6 @@
             font-size: 18px;
             line-height: 22px;
             overflow: hidden;
-            white-space: nowrap;
             text-overflow: ellipsis;
             width: calc(50vw - 240px);
             margin-bottom: 10px;

@@ -353,12 +353,12 @@ export const findCitiesCoord = (city: string):Array<number>|undefined => {
 
 function getDistanceFromLatLonInKm( point1:Array<number>, point2:Array<number> ) {
 	// если точки совпадают, то выходим из функции, возвращаем 0
-	if (( point1[0] == point2[0]) && (point1[1] == point2[1]))
+	if (( point1[0] === point2[0]) && (point1[1] === point2[1]))
 		return 0
 
-    const radlat1 = Math.PI * point1[0]/180
-    const radlat2 = Math.PI * point2[0]/180
-    const theta = point1[1]-point2[1]
+    const radlat1 = Math.PI * point1[0] / 180
+    const radlat2 = Math.PI * point2[0] / 180
+    const theta = point1[1] - point2[1]
     const radtheta = Math.PI * theta/180
     let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta)
     if (dist > 1) dist = 1

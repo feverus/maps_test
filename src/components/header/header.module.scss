@@ -39,6 +39,7 @@ header {
         align-items: center;
         flex: 1;
         justify-content: flex-end;
+        min-height: 80px;
         p {
             display: flex;
             flex-wrap: wrap;
@@ -145,8 +146,8 @@ header {
             flex: 1 0 100%;
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start;
-            p {flex-wrap: nowrap;}
+            justify-content: center;
+            order: 1;
         }
         &>div {
             min-height: 80px;
