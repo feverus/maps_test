@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import { CustomProvider as RsuiteProvider } from 'rsuite'
-import ruRu from 'rsuite/locales/ru_Ru'
+import ruRu from 'rsuite/cjs/locales/ru_RU.js'
 
 import App from './components/app';
 import storeAdressAndMap from './store/storeAdressAndMap'
