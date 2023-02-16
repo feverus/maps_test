@@ -10,7 +10,7 @@
 
 
 # Запуск докер-контейнера
-docker run -dti --rm -p 3000:80 --restart always --name maps feverus/maps
+docker run -dti -p 3000:80 --restart always --name maps feverus/maps_test
 
 ## Перед запуском прописать проброс порта, на котором будет висеть контейнер:
 Sudo nano /etc/apache2/sites-available/{ваш_домен}.conf
